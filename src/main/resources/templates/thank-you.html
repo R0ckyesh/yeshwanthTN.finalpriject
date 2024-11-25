@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/style.css">
+  <title>Thank You for Registering</title>
+  <style>
+    body {
+        background-color: #2C2F36; /* Dark grey background */
+        color: #D1D5DB; /* Light grey text */
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        text-align: center;
+    }
+
+    .thank-you-container {
+        background-color: #343A40; /* Slightly lighter grey for the container */
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        width: 80%;
+        max-width: 600px;
+    }
+
+    h1 {
+        font-size: 36px;
+        color: #F1F5F9;
+        margin-bottom: 20px;
+    }
+
+    p {
+        font-size: 18px;
+        color: #B0BEC5;
+        margin-bottom: 30px;
+    }
+
+    .button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 12px 30px;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        border: none;
+        display: inline-block;
+        transition: background-color 0.3s ease;
+    }
+
+    .button:hover {
+        background-color: #45a049;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .thank-you-container {
+            width: 90%;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 28px;
+        }
+
+        p {
+            font-size: 16px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            font-size: 14px;
+        }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Use a form to submit the request to go to the dashboard -->
+<form action="/go-dashboard" method="get">
+  <div class="thank-you-container">
+    <h1>Thank You for Registering!</h1>
+    <p>Your registration has been successfully saved.</p>
+    <button type="submit" class="button">Go to Dashboard</button>
+  </div>
+</form>
+
+</body>
+</html>

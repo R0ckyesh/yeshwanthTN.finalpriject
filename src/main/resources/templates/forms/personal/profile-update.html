@@ -3,49 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile Update Form</title>
+    <title>Update Password</title>
+    <link rel="stylesheet" href="/static.css/style.css">
     <style>
+        /* Page and body styling */
         body {
-            background-color: #f7f9fc; /* Light background for the whole page */
-            font-family: 'Arial', sans-serif;
-            padding: 20px;
+            background-color: #f4f4f4; /* Light grey background */
+            font-family: Arial, sans-serif;
             margin: 0;
+            padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
         }
 
-        .form-container {
-            max-width: 600px;
+        /* Container for the page */
+        .page-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             width: 100%;
-            background-color: #ffffff;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            padding: 30px;
-            box-sizing: border-box;
+            height: 100%;
         }
 
-        h1 {
-            color: #007bff;
+        /* Update password form container */
+        .update-password-container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
             text-align: center;
-            font-size: 28px;
+        }
+
+        h2 {
+            color: #007bff;
             margin-bottom: 30px;
         }
 
+        /* Label and input field styling */
         label {
             display: block;
             font-weight: bold;
+            margin-bottom: 10px;
             color: #333;
-            font-size: 16px;
-            margin-bottom: 8px;
         }
 
         input {
             width: 100%;
             padding: 12px;
-            margin-top: 5px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             border: 1px solid #ccc;
             border-radius: 4px;
             font-size: 16px;
@@ -58,59 +67,68 @@
             outline: none;
         }
 
-        .submit-btn {
-            display: block;
-            width: 100%;
+        /* Button styling */
+        button {
             padding: 15px;
+            width: 100%;
             background-color: #007bff;
             color: #ffffff;
-            font-size: 18px;
+            font-size: 16px;
             border: none;
             border-radius: 4px;
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
 
-        .submit-btn:hover {
+        button:hover {
             background-color: #0056b3;
         }
 
-        /* Responsive design */
-        @media (max-width: 768px) {
-            .form-container {
-                padding: 20px;
-            }
+        /* Error and success message styling */
+        .error-message, .success-message {
+            margin-top: 20px;
+            padding: 10px;
+            border-radius: 4px;
+            color: white;
+            font-size: 16px;
+        }
 
-            h1 {
-                font-size: 24px;
-            }
+        .error-message {
+            background-color: #f44336; /* Red */
+        }
 
-            input {
-                padding: 10px;
-                font-size: 14px;
-            }
-
-            .submit-btn {
-                padding: 12px;
-                font-size: 16px;
-            }
+        .success-message {
+            background-color: #4CAF50; /* Green */
         }
     </style>
 </head>
 <body>
+<div class="page-container">
+    <div class="update-password-container">
+        <h2>Update Your Password</h2>
+        <form action="/update-password" method="post">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required placeholder="Enter your email">
 
-<div class="form-container">
-    <h1>Profile Update Form</h1>
-    <form class="form-style">
-        <label for="newEmail">New Email:</label>
-        <input type="email" id="newEmail" name="newEmail" placeholder="Enter your new email" required>
+            <label for="newPassword">New Password</label>
+            <input type="password" id="newPassword" name="newPassword" required placeholder="Enter new password">
 
-        <label for="newPassword">New Password:</label>
-        <input type="password" id="newPassword" name="newPassword" placeholder="Enter your new password" required>
+            <label for="confirmPassword">Confirm New Password</label>
+            <input type="password" id="confirmPassword" name="confirmPassword" required placeholder="Confirm new password">
 
-        <button type="submit" class="submit-btn">Update</button>
-    </form>
+            <button type="submit">Update Password</button>
+
+            <!-- Error message display -->
+            <div class="error-message" th:if="${error}">
+                <p th:text="${error}"></p>
+            </div>
+
+            <!-- Success message display -->
+            <div class="success-message" th:if="${success}">
+                <p th:text="${success}"></p>
+            </div>
+        </form>
+    </div>
 </div>
-
 </body>
 </html>

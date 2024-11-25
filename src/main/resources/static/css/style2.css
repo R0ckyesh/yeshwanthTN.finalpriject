@@ -1,64 +1,85 @@
-/* General Layout */
+/* Global Styles */
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: Arial, sans-serif;
+    background-color: #2C2F36; /* Dark Grey Background */
+    color: #D1D5DB; /* Light Grey Text */
     margin: 0;
     padding: 0;
-    background-color: #f8f9fa; /* Light background */
-}
-
-/* Main Content Styling */
-.dashboard-container {
-    margin-left: 250px; /* Offset by the width of the sidebar */
-    padding: 30px; /* Increased padding */
-    background-color: #fff; /* Set to white */
-    box-sizing: border-box;
     display: flex;
-    flex-direction: column;
-    align-items: center; /* Centers the content */
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-/* Table Styling */
+/* Dashboard Container */
+.dashboard-container {
+    background-color: #343A40; /* Slightly lighter grey */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 1000px;
+    text-align: center;
+}
+
+/* Header Style */
+h1 {
+    color: #F1F5F9; /* Light text color */
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+/* Table Styles */
 table {
-    width: 80%; /* Table takes up 80% of the container width */
-    margin: 20px auto; /* Centers the table horizontally */
-    border-collapse: collapse; /* Ensures no space between table cells */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Adds shadow for a cleaner look */
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
 }
 
-/* Table Header Styling */
-th, td {
-    padding: 12px 15px; /* Adds space inside each cell */
-    text-align: center; /* Centers the text inside cells */
-    border: 1px solid #ddd; /* Light border for table cells */
+/* Table Header */
+thead {
+    background-color: #4B5563; /* Darker grey for header */
 }
 
 th {
-    background-color: #007bff; /* Blue background for header */
-    color: white; /* White text for headers */
-    font-size: 18px; /* Larger text for headers */
+    padding: 10px;
+    text-align: left;
+    color: #F1F5F9;
+    font-size: 16px;
+}
+
+/* Table Rows */
+tbody tr:nth-child(even) {
+    background-color: #4B5563;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #3A3F47; /* Slightly darker grey for alternating rows */
 }
 
 td {
-    background-color: #f9f9f9; /* Light background for table rows */
-    font-size: 16px; /* Slightly smaller text for content cells */
+    padding: 10px;
+    text-align: left;
+    font-size: 14px;
 }
 
-tr:nth-child(even) td {
-    background-color: #f1f1f1; /* Alternating row color */
+/* Table Row Hover Effect */
+tbody tr:hover {
+    background-color: #575D66; /* Lighter grey on hover */
 }
 
-tr:hover td {
-    background-color: #e6f2ff; /* Light blue on hover */
-}
-
-/* Optional: Add responsiveness for smaller screens */
+/* Responsive Design */
 @media (max-width: 768px) {
-    table {
-        width: 100%; /* Table takes full width on smaller screens */
+    .dashboard-container {
+        width: 95%;
+        padding: 20px;
     }
 
-    th, td {
-        font-size: 14px; /* Adjust font size for smaller screens */
-        padding: 8px 10px; /* Adjust padding */
+    h1 {
+        font-size: 28px;
+    }
+
+    table {
+        font-size: 14px;
     }
 }

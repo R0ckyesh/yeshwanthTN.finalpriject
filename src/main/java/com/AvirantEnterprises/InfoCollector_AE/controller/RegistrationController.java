@@ -1,6 +1,7 @@
 package com.AvirantEnterprises.InfoCollector_AE.controller;
 
 import com.AvirantEnterprises.InfoCollector_AE.model.User;
+import com.AvirantEnterprises.InfoCollector_AE.repository.UserRepository;
 import com.AvirantEnterprises.InfoCollector_AE.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,8 +16,10 @@ public class RegistrationController {
     private UserService userService;
 
     @PostMapping("/submit")
-    public String registerUser(@RequestParam String name, @RequestParam String email,
-                               @RequestParam String password, @RequestParam String confirmPassword,
+    public String registerUser(@RequestParam String name,
+                               @RequestParam String email,
+                               @RequestParam String password,
+                               @RequestParam String confirmPassword,
                                Model model) {
 
         if (!password.equals(confirmPassword)) {
@@ -28,6 +31,14 @@ public class RegistrationController {
         User user = new User(name, password, "USER", email);
         userService.saveUser(user);  // Save the user using UserService
 
-        return "redirect:/admin/dashboard";  // Redirect to admin dashboard after successful registration
+        return "redirect:/thank-you";  // Redirect to admin dashboard after successful registration
     }
+
+
+
+
+
+
+
+
 }

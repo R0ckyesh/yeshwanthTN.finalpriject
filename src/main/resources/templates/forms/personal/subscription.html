@@ -41,7 +41,7 @@
             margin-bottom: 8px;
         }
 
-        select {
+        select, input[type="file"] {
             width: 100%;
             padding: 12px;
             margin-top: 5px;
@@ -53,7 +53,7 @@
             transition: border 0.3s ease;
         }
 
-        select:focus {
+        select:focus, input[type="file"]:focus {
             border-color: #007bff;
             outline: none;
         }
@@ -74,43 +74,52 @@
         .submit-btn:hover {
             background-color: #0056b3;
         }
-
-        /* Responsive design */
-        @media (max-width: 768px) {
-            .form-container {
-                padding: 20px;
-            }
-
-            h1 {
-                font-size: 24px;
-            }
-
-            select {
-                padding: 10px;
-                font-size: 14px;
-            }
-
-            .submit-btn {
-                padding: 12px;
-                font-size: 16px;
-            }
-        }
     </style>
 </head>
 <body>
 
 <div class="form-container">
     <h1>Subscription Form</h1>
-    <form class="form-style">
+    <form action="/subscribe"   class="form-style" id="subscriptionForm" method="post">
         <label for="plan">Select Plan:</label>
         <select id="plan" name="plan" required>
             <option value="basic">Basic</option>
             <option value="premium">Premium</option>
         </select>
 
-        <button type="submit" class="submit-btn">Subscribe</button>
+        <label for="file">Upload File:</label>
+        <input type="file" id="file" name="file" required>
+
+        <button type="button" class="submit-btn" onclick="submitForm()">Subscribe</button>
     </form>
 </div>
+
+<script>
+    // Function to update file input based on selected plan
+    document.getElementById('plan').addEventListener('change', function() {
+        const fileInput = document.getElementById('file');
+        if (this.value === 'basic') {
+            // Allow only .txt and image files for basic plan
+            fileInput.setAttribute('accept', '.txt, .jpg, .jpeg, .png, .gif, .bmp, .img');
+        } else if (this.value === 'premium') {
+            // Allow all file types for premium plan
+            fileInput.removeAttribute('accept');
+        }
+    });
+
+    // Function to simulate form submission
+    function submitForm() {
+        const plan = document.getElementById('plan').value;
+        const fileInput = document.getElementById('file');
+
+        // You can further validate the form and file selection here
+        if (fileInput.files.length === 0) {
+            alert('Please select a file to upload.');
+        } else {
+            alert(`Form submitted with plan: ${plan} and file: ${fileInput.files[0].name}`);
+        }
+    }
+</script>
 
 </body>
 </html>
